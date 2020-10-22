@@ -5,13 +5,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/plants_in_pots"
+    android:backgroundTint="#FFFFFF"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-
-    tools:context=".ui.login.LoginActivity"
-    android:background="@drawable/plants_in_pots">
+    tools:context=".ui.login.LoginActivity">
 
 
     <EditText
@@ -71,7 +72,7 @@
         android:id="@+id/Title"
         android:layout_width="171dp"
         android:layout_height="60dp"
-        android:background="#D4DCDB"
+        android:background="#FFFFFF"
         android:ellipsize="none"
         android:text="Plant App"
         android:textAlignment="center"
@@ -88,10 +89,10 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login or Sign up"
-        android:textColor="#858585"
         android:background="#D4DCDB"
         android:backgroundTint="#858585"
+        android:text="Login or Sign up"
+        android:textColor="#858585"
         app:iconTint="#D4DCDB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
