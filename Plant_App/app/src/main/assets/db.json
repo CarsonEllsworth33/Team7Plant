@@ -1,0 +1,34 @@
+{
+  "plants": [
+    {
+      "title": "Echeveria Subsellis Succulent",
+      "image" : "https://cdn.shopify.com/s/files/1/2198/4603/products/Echeveriasubsessilis2_980x.jpg?v=1590482499",
+      "url": "wikipedia.org/wiki/Succulent",
+      "description": "Beautiful succulent for our collection!",
+      "servings": 4,
+      "dietLabel": "Low Maintenance",
+      "ingredientLines" : [ "Water level low", "Very little care required", "Medium light", "Perennial" ]
+    },
+
+    {
+        "title": "Purple Vein Petunia",
+        "image" : "https://www.stokeseeds.com/us/media/catalog/product/cache/bac8d3471ceb310b87c2cb5743f9274d/1/9/1908m_large.jpg",
+        "url": "wikipedia.org/wiki/Petunia",
+        "description": "Name is derived from tobacco",
+        "servings": 4,
+        "dietLabel": "Medium Maintenance",
+        "ingredientLines" : [ "Watering once a week", "Very little care required", "5 hours of sunlight a day", "Annual"]
+      },
+  
+
+      {
+        "title": "Plumeria",
+        "image" : "https://cdn11.bigcommerce.com/s-52h2v/images/stencil/1280x1280/products/479/1273/cancun_pink__42068.1409325908.jpg?c=2&imbypass=on",
+        "url": "wikipedia.org/wiki/Plumeria",
+        "description": "Beautiful plant native to Central America",
+        "servings": 4,
+        "dietLabel": "High Maintenance",
+        "ingredientLines" : [ "Easy to graft", "High Temperature Sensitivity", "Medium light", "Perennial" ]
+      }
+  ]
+}

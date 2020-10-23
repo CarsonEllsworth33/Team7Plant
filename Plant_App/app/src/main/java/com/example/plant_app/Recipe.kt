@@ -28,45 +28,63 @@
  * THE SOFTWARE.
  *
  */
+
 package com.example.plant_app
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.View
-import android.widget.ListView
-import androidx.appcompat.app.AppCompatActivity
-import com.example.plant_app.Recipe
+import android.content.Context
+import org.json.JSONException
+import org.json.JSONObject
 
 
-class MainActivity : AppCompatActivity() {
+class Recipe(
+    val title: String,
+    val description: String,
+    val imageUrl: String,
+    val instructionUrl: String,
+    val label: String) {
 
-  private lateinit var listView: ListView
+  companion object {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    fun getRecipesFromFile(filename: String, context: Context): ArrayList<Recipe> {
+      val recipeList = ArrayList<Recipe>()
 
-    listView = findViewById<ListView>(R.id.recipe_list_view)
+      try {
+        // Load data
+        val jsonString = loadJsonFromAsset("db.json", context)
+        val json = JSONObject(jsonString)
+        val plants = json.getJSONArray("plants")
 
-    val recipeList = Recipe.getRecipesFromFile("db.json", this)
+        // Get Recipe objects from data
+        (0 until plants.length()).mapTo(recipeList) {
+          Recipe(plants.getJSONObject(it).getString("title"),
+                  plants.getJSONObject(it).getString("description"),
+                  plants.getJSONObject(it).getString("image"),
+                  plants.getJSONObject(it).getString("url"),
+                  plants.getJSONObject(it).getString("dietLabel"))
+        }
+      } catch (e: JSONException) {
+        e.printStackTrace()
+      }
 
-    val adapter = RecipeAdapter(this, recipeList)
-    listView.adapter = adapter
+      return recipeList
+    }
 
-    val context = this
-    listView.setOnItemClickListener { _, _, position, _ ->
-      val selectedRecipe = recipeList[position]
+    private fun loadJsonFromAsset(filename: String, context: Context): String? {
+      var json: String? = null
 
-      val detailIntent = RecipeDetailActivity.newIntent(context, selectedRecipe)
+      try {
+        val inputStream = context.assets.open(filename)
+        val size = inputStream.available()
+        val buffer = ByteArray(size)
+        inputStream.read(buffer)
+        inputStream.close()
+        json = String(buffer, Charsets.UTF_8)
+      } catch (ex: java.io.IOException) {
+        ex.printStackTrace()
+        return null
+      }
 
-      startActivity(detailIntent)
+      return json
     }
   }
-  fun plantClick(view: View)
-  {
-    //Intent i = new Intent(MainActivity.this, PlantActivity.class)
-    //startActivity(i)
-    setContentView(R.layout.activity_plant)
-  }
-
 }
