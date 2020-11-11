@@ -12,16 +12,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
 import javax.inject.Inject
 import javax.inject.Singleton
 
+*/
 /**
  * Repository module for handling data operations.
- */
+ *//*
+
 @Singleton
 class MyPlantRepository @Inject constructor(private val myPlantDao: MyPlantDao) {
 
@@ -30,3 +33,4 @@ class MyPlantRepository @Inject constructor(private val myPlantDao: MyPlantDao) 
     fun getPlant(plantId: String) = myPlantDao.getPlant(plantId)
 
 }
+*/

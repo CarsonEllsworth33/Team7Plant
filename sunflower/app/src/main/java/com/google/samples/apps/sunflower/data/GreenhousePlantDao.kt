@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
@@ -23,9 +24,11 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 
+*/
 /**
  * The Data Access Object for the [GardenPlanting] class.
- */
+ *//*
+
 @Dao
 interface GreenhousePlantDao {
     @Query("SELECT * FROM Greenhouse_Plants")
@@ -34,10 +37,12 @@ interface GreenhousePlantDao {
     @Query("SELECT EXISTS(SELECT 1 FROM Greenhouse_Plants WHERE plant_id = :plantId LIMIT 1)")
     fun isPlanted(plantId: String): LiveData<Boolean>
 
-    /**
+    */
+/**
      * This query will tell Room to query both the [Plant] and [GreenhousePlant] tables and handle
      * the object mapping.
-     */
+     *//*
+
     @Transaction
     @Query("SELECT * FROM plants WHERE id IN (SELECT DISTINCT(plant_id) FROM Greenhouse_Plants)")
     fun getGreenhousePlants(): LiveData<List<PlantAndGardenPlantings>>
@@ -48,3 +53,4 @@ interface GreenhousePlantDao {
     @Delete
     suspend fun deleteGreenhousePlant(greenhousePlant: GreenhousePlant)
 }
+*/

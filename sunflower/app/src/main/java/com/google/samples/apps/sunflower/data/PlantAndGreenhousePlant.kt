@@ -12,17 +12,20 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
 import androidx.room.Embedded
 import androidx.room.Relation
 
+*/
 /**
  * This class captures the relationship between a [MyPlant] and a user's [GreenhousePlant], which is
  * used by Room to fetch the related entities.
- */
+ *//*
+
 data class PlantAndGreenhousePlant(
         @Embedded
         val plant: MyPlant,
@@ -30,3 +33,4 @@ data class PlantAndGreenhousePlant(
         @Relation(parentColumn = "id", entityColumn = "plant_id")
         val greenhousePlants: List<GreenhousePlant> = emptyList()
 )
+*/

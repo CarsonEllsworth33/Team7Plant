@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
@@ -27,9 +28,11 @@ import androidx.work.WorkManager
 import com.google.samples.apps.sunflower.utilities.DATABASE_NAME
 import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
 
+*/
 /**
  * The Room database for this app
- */
+ *//*
+
 @Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class NewAppDatabase : RoomDatabase() {
@@ -65,3 +68,4 @@ abstract class NewAppDatabase : RoomDatabase() {
         }
     }
 }
+*/
