@@ -46,4 +46,9 @@ class DatabaseModule {
     fun provideGardenPlantingDao(appDatabase: AppDatabase): GardenPlantingDao {
         return appDatabase.gardenPlantingDao()
     }
+    /*
+    @Provides
+    fun provideGreenhousePlantDao(appDatabase: AppDatabase): GreenhousePlantDao {
+        return appDatabase.GreenhousePlantDao()
+     */
 }

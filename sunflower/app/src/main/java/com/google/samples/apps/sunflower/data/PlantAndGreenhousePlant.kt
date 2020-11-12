@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+
+package com.google.samples.apps.sunflower.data
+
+import androidx.room.Embedded
+import androidx.room.Relation
+
 
 /**
- * Constants used throughout the app.
+ * This class capures the relationship between a [MyPlant] and a user's [GreenhousePlant], which is
+ * used by Room to fetch the related entities.
  */
-const val DATABASE_NAME = "sunflower-db"
-const val PLANT_DATA_FILENAME = "plants.json"
 
-// const val DATABASE_NAME = "iPlant-db"
-// const val GREENHOUSE_DATA_FILENAME = "ghouse.json"
+data class PlantAndGreenhousePlant(
+        @Embedded
+        val plant: MyPlant,
+
+        @Relation(parentColumn = "id", entityColumn = "plant_id")
+        val greenhousePlants: List<GreenhousePlant> = emptyList()
+)
 

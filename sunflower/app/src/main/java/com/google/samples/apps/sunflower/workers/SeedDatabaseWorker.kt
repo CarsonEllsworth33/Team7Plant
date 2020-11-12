@@ -25,6 +25,8 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.samples.apps.sunflower.data.AppDatabase
 import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.data.NewAppDatabase
+import com.google.samples.apps.sunflower.data.MyPlant
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
 

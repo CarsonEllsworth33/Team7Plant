@@ -14,14 +14,23 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+
+package com.google.samples.apps.sunflower.data
+
+import javax.inject.Inject
+import javax.inject.Singleton
+
 
 /**
- * Constants used throughout the app.
+ * Repository module for handling data operations.
  */
-const val DATABASE_NAME = "sunflower-db"
-const val PLANT_DATA_FILENAME = "plants.json"
 
-// const val DATABASE_NAME = "iPlant-db"
-// const val GREENHOUSE_DATA_FILENAME = "ghouse.json"
+@Singleton
+class MyPlantRepository @Inject constructor(private val myPlantDao: MyPlantDao) {
+
+    fun getPlants() = myPlantDao.getPlants()
+
+    fun getPlantID(plantName: Int) = myPlantDao.getPlantID(plantName)
+
+}
 
