@@ -32,6 +32,9 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_view_pager_fragment_to_new_plant_fragment"
+            app:destination="@id/new_plant_fragment" />
     </fragment>
 
     <fragment
@@ -60,6 +63,23 @@
         <argument
             android:name="plantName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_gallery_fragment_to_new_plant_fragment"
+            app:destination="@id/new_plant_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/new_plant_fragment"
+        android:name="com.google.samples.apps.sunflower.NewPlantFragment"
+        android:label="New plant"
+        tools:layout="@layout/fragment_new_plant">
+
+        <action
+            android:id="@+id/action_new_plant_fragment_to_gallery_fragment"
+            app:destination="@id/gallery_fragment" />
+        <action
+            android:id="@+id/action_new_plant_fragment_to_view_pager_fragment"
+            app:destination="@id/view_pager_fragment" />
     </fragment>
 
 </navigation>

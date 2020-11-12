@@ -17,7 +17,7 @@
 <resources>
 
     <!-- Resources that do not require translation -->
-    <string name="app_name" translatable="false">Sunflower</string>
+    <string name="app_name" translatable="false">Plant App</string>
 
     <!-- Translatable resources -->
     <string name="menu_filter_by_grow_zone" translation_description="The label for the menu item to filter the displayed plants by grow zone.">Filter by grow zone</string>
@@ -33,6 +33,7 @@
     <string name="menu_item_share_plant" translation_description="The label for the Share menu item">Share</string>
     <string name="share_text_plant" translation_description="The default messaged used when sharing a plant on SNS, etc.">Check out the %s plant in the Android Sunflower app</string>
     <string name="gallery_title" translation_description="Title for the photo gallery screen">Photos by Unsplash</string>
+    <string name="add_new_plant_title" translation_description="Title for the add new plant screen">Add New Plant</string>
 
     <!-- String plurals and their related prefix / suffix strings -->
     <string name="watering_needs_prefix" translation_description="Prefix for the text describing how often a plant should be watered. Used in combination with watering_needs_suffix.">Watering needs</string>
@@ -50,5 +51,7 @@
     <string name="a11y_plant_item_image" translation_description="Accessibility text for each of the plant images shown in the 'My garden' and 'Plant list' screens.">Picture of plant</string>
     <string name="gallery_content_description" translation_description="Content description for the clickable image to navigate to the gallery screen">Navigate to gallery screen</string>
     <string name="plant_detail_image_content_description" translation_description="Content description for the header / hero image that is show at the top of the plant detail screen.">Image of plant</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
