@@ -40,7 +40,7 @@ class statBlockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is statBlockViewHolder ->{
-                holder.bind(items.get(position))
+                holder.bind(items[position])
             }
         }
     }
@@ -62,8 +62,8 @@ class statBlockAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
         fun bind(statBlock: statBlock){
 
-            statTitle.setText(statBlock.title)
-            statData.setText(statBlock.data)
+            statTitle.text = statBlock.title
+            statData.text = statBlock.data
 
             val requestOptions = RequestOptions()
                     .placeholder(R.drawable.ic_launcher_background)

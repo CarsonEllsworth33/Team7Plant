@@ -16,18 +16,6 @@
 
 package com.google.samples.apps.sunflower
 
-import android.widget.HorizontalScrollView
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.samples.apps.sunflower.adapters.statBlockAdapter
-import com.google.samples.apps.sunflower.data.dummyStats.Companion.createDataSet
-import com.google.samples.apps.sunflower.databinding.FragmentNewPlantBinding
-import com.google.samples.apps.sunflower.databinding.FragmentPlantStatsBinding
-import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
-import com.google.samples.apps.sunflower.viewmodels.PlantStatsViewModel
-import kotlinx.android.synthetic.main.fragment_plant_stats.*
-import javax.sql.DataSource
-
 /*
  * Copyright 2018 Google LLC
  *
@@ -45,35 +33,31 @@ import javax.sql.DataSource
  */
 
 
-import android.content.Intent
+//import android.R
+import com.google.samples.apps.sunflower.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.app.ShareCompat
-import androidx.core.widget.NestedScrollView
-import androidx.databinding.DataBindingUtil
+import android.widget.LinearLayout
+import androidx.annotation.ContentView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.samples.apps.sunflower.data.Plant
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.samples.apps.sunflower.adapters.statBlockAdapter
+import com.google.samples.apps.sunflower.data.TopSpacingItemDecoration
 import com.google.samples.apps.sunflower.data.dummyStats
-import com.google.samples.apps.sunflower.databinding.FragmentPlantDetailBinding
-import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
+import com.google.samples.apps.sunflower.databinding.FragmentPlantStatsBinding
+import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import com.google.samples.apps.sunflower.data.dummyStats.Companion.createDataSet
+import kotlinx.android.synthetic.main.fragment_plant_stats.*
+
 
 /**
  * A fragment representing a single Plant stats screen.
  */
 @AndroidEntryPoint
-class StatBlockFragment : Fragment() {
+class StatBlockFragment : Fragment(R.layout.fragment_plant_stats) {
 
     private lateinit var statBlockAdapter: statBlockAdapter
 
@@ -87,13 +71,12 @@ class StatBlockFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPlantStatsBinding.inflate(inflater, container, false)
-
         return binding.root
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_plant_stats)
 
         initRecyclerView()
         addDataSet()
@@ -106,7 +89,9 @@ class StatBlockFragment : Fragment() {
 
     private fun initRecyclerView(){
         statsView.apply{
-            layoutManager = LinearLayoutManager(this)
+            layoutManager = LinearLayoutManager(this.context)
+            val topSpacingDecoration = TopSpacingItemDecoration(30)
+            addItemDecoration(topSpacingDecoration)
             statBlockAdapter = statBlockAdapter()
             adapter = statBlockAdapter
         }
