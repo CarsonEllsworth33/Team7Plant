@@ -31,10 +31,10 @@ interface SensorsDao {
     @Query("SELECT * FROM sensors ORDER BY gId")
     fun getAllInfo(): LiveData<List<Sensors>>
 
-    @Query("SELECT sensor, time, value FROM sensors WHERE gId = :id ORDER BY sensor")
+    @Query("SELECT * FROM sensors WHERE gId = :id ORDER BY sensor")
     fun getPlantStatus(id: Long): LiveData<List<Sensors>>
 
-    @Query("SELECT time, value FROM sensors WHERE gId = :id AND sensor = :sens")
+    @Query("SELECT * FROM sensors WHERE gId = :id AND sensor = :sens")
     fun getPlantSensorData(id: Long, sens: String): LiveData<List<Sensors>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
