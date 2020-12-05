@@ -30,11 +30,12 @@ import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
+@Database(entities = [GardenPlanting::class, Plant::class, Sensors::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao
     abstract fun plantDao(): PlantDao
+    abstract fun sensorsDao(): SensorsDao
 
     companion object {
 
@@ -51,7 +52,8 @@ abstract class AppDatabase : RoomDatabase() {
         // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                .addCallback(
+                    .fallbackToDestructiveMigration()
+                    .addCallback(
                     object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
