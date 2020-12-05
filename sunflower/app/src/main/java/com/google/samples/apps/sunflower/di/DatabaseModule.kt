@@ -20,6 +20,7 @@ import android.content.Context
 import com.google.samples.apps.sunflower.data.AppDatabase
 import com.google.samples.apps.sunflower.data.GardenPlantingDao
 import com.google.samples.apps.sunflower.data.PlantDao
+import com.google.samples.apps.sunflower.data.SensorsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,5 +46,9 @@ class DatabaseModule {
     @Provides
     fun provideGardenPlantingDao(appDatabase: AppDatabase): GardenPlantingDao {
         return appDatabase.gardenPlantingDao()
+    }
+    @Provides
+    fun provideSensorsDao(appDatabase: AppDatabase): SensorsDao {
+        return appDatabase.sensorsDao()
     }
 }
