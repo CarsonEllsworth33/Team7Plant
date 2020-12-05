@@ -75,18 +75,18 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/newplantsunlight"
+                android:id="@+id/new_plant_sunlight"
                 android:hint="Recommended amount of sunlight"
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/newplantwater"
+                android:id="@+id/new_plant_water"
                 android:hint="Amount of water needed per day (oz)"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/newplanttempurature"
+                android:id="@+id/new_plant_tempurature"
                 android:hint="Average Healthy Tempurature"/>
 
 
