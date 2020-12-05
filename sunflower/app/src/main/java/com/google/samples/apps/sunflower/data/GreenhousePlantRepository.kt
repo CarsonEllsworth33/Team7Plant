@@ -12,27 +12,31 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
 import javax.inject.Inject
 import javax.inject.Singleton
 
-/**
- * Repository module for handling data operations.
- */
 @Singleton
-class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
+class GreenhousePlantRepository @Inject constructor(
+        private val greenhousePlantDao: GreenhousePlantDao
+) {
 
-    fun getPlants() = plantDao.getPlants()
-
-    fun getPlant(plantId: String) = plantDao.getPlant(plantId)
-
-    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
-        plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
-
-    suspend fun createPlant(newplant: Plant){
-        plantDao.insertNew(newplant)
+    suspend fun createGreenhousePlant(plantId: String) {
+        val greenhousePlant = GreenhousePlant(plantId)
+        greenhousePlantDao.insertGreenhousePlant(greenhousePlant)
     }
+
+    suspend fun removeGreenhousePlant(greenhousePlant: GreenhousePlant) {
+        greenhousePlantDao.deleteGreenhousePlant(greenhousePlant)
+    }
+
+    fun isPlanted(plantId: String) =
+            greenhousePlantDao.isPlanted(plantId)
+
+    fun getGreenhousePlants() =  greenhousePlantDao.getGreenhousePlants()
 }
+*/

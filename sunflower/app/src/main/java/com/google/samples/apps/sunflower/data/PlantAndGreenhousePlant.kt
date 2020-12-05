@@ -12,27 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package com.google.samples.apps.sunflower.data
 
-import javax.inject.Inject
-import javax.inject.Singleton
+import androidx.room.Embedded
+import androidx.room.Relation
 
+*/
 /**
- * Repository module for handling data operations.
- */
-@Singleton
-class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
+ * This class captures the relationship between a [MyPlant] and a user's [GreenhousePlant], which is
+ * used by Room to fetch the related entities.
+ *//*
 
-    fun getPlants() = plantDao.getPlants()
+data class PlantAndGreenhousePlant(
+        @Embedded
+        val plant: MyPlant,
 
-    fun getPlant(plantId: String) = plantDao.getPlant(plantId)
-
-    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
-        plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
-
-    suspend fun createPlant(newplant: Plant){
-        plantDao.insertNew(newplant)
-    }
-}
+        @Relation(parentColumn = "id", entityColumn = "plant_id")
+        val greenhousePlants: List<GreenhousePlant> = emptyList()
+)
+*/

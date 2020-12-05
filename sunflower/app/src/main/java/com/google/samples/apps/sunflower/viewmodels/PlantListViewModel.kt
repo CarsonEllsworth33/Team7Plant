@@ -18,21 +18,19 @@ package com.google.samples.apps.sunflower.viewmodels
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.google.samples.apps.sunflower.PlantListFragment
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.data.PlantRepository
+import kotlinx.coroutines.launch
 
 /**
  * The ViewModel for [PlantListFragment].
  */
 class PlantListViewModel @ViewModelInject internal constructor(
     plantRepository: PlantRepository,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    @Assisted private val savedStateHandle: SavedStateHandle,
+    private val repository: PlantRepository
 ) : ViewModel() {
 
     val plants: LiveData<List<Plant>> = getSavedGrowZoneNumber().switchMap {
@@ -40,6 +38,12 @@ class PlantListViewModel @ViewModelInject internal constructor(
             plantRepository.getPlants()
         } else {
             plantRepository.getPlantsWithGrowZoneNumber(it)
+        }
+    }
+
+    fun addPlantToDatabase(plant: Plant){
+        viewModelScope.launch {
+            repository.createPlant(plant)
         }
     }
 
