@@ -17,6 +17,7 @@
 package com.google.samples.apps.sunflower
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,10 +26,13 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.samples.apps.sunflower.adapters.GardenPlantingAdapter
 import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
+import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.FragmentGardenBinding
 import com.google.samples.apps.sunflower.databinding.FragmentNewPlantBinding
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
+import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_new_plant.*
 
 @AndroidEntryPoint
 class NewPlantFragment : Fragment() {
@@ -36,6 +40,9 @@ class NewPlantFragment : Fragment() {
     private lateinit var binding: FragmentNewPlantBinding
 
     private val viewModel: GardenPlantingListViewModel by viewModels()
+
+    private val plantModel: PlantListViewModel by viewModels()
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -45,13 +52,34 @@ class NewPlantFragment : Fragment() {
         binding = FragmentNewPlantBinding.inflate(inflater, container, false)
 
         binding.createPlant.setOnClickListener {
+            addPlantToDatabase()
             navigateToPlantListPage()
         }
         return binding.root
     }
 
 
-    // TODO: convert to data binding if applicable
+    private fun addPlantToDatabase() {
+        val plantname = new_plant_name.text.toString()
+        val plantID = new_plant_sname.text.toString()
+        val plant_desc = ""
+        val grow_zone_num = 2
+        val watering_interval = 7
+        val img_url = ""
+
+        if (inputCheck(plantname, plantID)){
+            // Create plant Object
+            val newPlant = Plant(plantID, plantname, plant_desc, grow_zone_num, watering_interval, img_url)
+            // Add data to Database
+            plantModel.addPlantToDatabase(newPlant)
+
+        }
+    }
+
+    private fun inputCheck(plantname: String, plantID: String) : Boolean{
+        return !(TextUtils.isEmpty(plantID) && TextUtils.isEmpty(plantname))
+    }
+
     private fun navigateToPlantListPage() {
         requireActivity().findViewById<ViewPager2>(R.id.view_pager).currentItem =
                 PLANT_LIST_PAGE_INDEX

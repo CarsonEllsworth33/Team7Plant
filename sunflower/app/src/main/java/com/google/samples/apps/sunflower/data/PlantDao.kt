@@ -21,6 +21,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.google.samples.apps.sunflower.generated.callback.OnClickListener
 
 /**
  * The Data Access Object for the Plant class.
@@ -38,4 +39,7 @@ interface PlantDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(plants: List<Plant>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNew(plant: Plant)
 }

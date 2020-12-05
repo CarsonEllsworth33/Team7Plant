@@ -31,4 +31,8 @@ class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
 
     fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
         plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
+
+    suspend fun createPlant(newplant: Plant){
+        plantDao.insertNew(newplant)
+    }
 }
