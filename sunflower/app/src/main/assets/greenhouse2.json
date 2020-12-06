@@ -1,0 +1,23 @@
+[
+  {
+    "plantId": "Streptocarpus",
+    "plantDate": 1607209177208,
+    "nickname": "Upstairs Plant",
+    "lastWateringDate": 1607209177208,
+    "id": 0
+  },
+  {
+    "plantId": "Symphoricarpos",
+    "plantDate": 1607209177208,
+    "nickname": "Dining Room Plant",
+    "lastWateringDate": 1607209177208,
+    "id": 1
+  },
+  {
+    "plantId": "Colocasia",
+    "plantDate": 1607209177208,
+    "nickname": "Personal Plant",
+    "lastWateringDate": 1607209177208,
+    "id": 2
+  }
+]
