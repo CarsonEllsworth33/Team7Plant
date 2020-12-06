@@ -34,7 +34,18 @@ class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     val plantDateString get() = dateFormat.format(gardenPlanting.plantDate)//dateFormat.format(gardenPlanting.plantDate.time)
     val plantId
         get() = plant.plantId
-
+    val nickname
+        get() = gardenPlanting.nickname
+    val real_id
+        get() = gardenPlanting.gardenPlantingId
+    val min_temp
+        get() = plant.min_temp_F
+    val max_temp
+        get() = plant.max_temp_F
+    val acidity
+        get() = plant.ideal_acidity
+    val watering
+        get() = plant.watering_amount
     companion object {
         private val dateFormat = SimpleDateFormat("MMM d, yyyy", Locale.US)
     }
