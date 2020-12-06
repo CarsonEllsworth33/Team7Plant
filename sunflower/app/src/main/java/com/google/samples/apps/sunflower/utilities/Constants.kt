@@ -22,4 +22,4 @@ package com.google.samples.apps.sunflower.utilities
 const val DATABASE_NAME = "sunflower-db"
 const val PLANT_DATA_FILENAME = "myplants.json"
 const val SENSOR_DATA_FILENAME = "sensorsdata.json"
-//const val GARDEN_DATA_FILENAME = "garden.json"
+const val GREENHOUSE_DATA_FILENAME = "greenhouse2.json"
