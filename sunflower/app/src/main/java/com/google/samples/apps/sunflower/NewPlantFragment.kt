@@ -62,14 +62,20 @@ class NewPlantFragment : Fragment() {
     private fun addPlantToDatabase() {
         val plantname = new_plant_name.text.toString()
         val plantID = new_plant_sname.text.toString()
-        val plant_desc = ""
+        val plant_desc = plant_desc.text.toString()
+        val water_amount = new_plant_water.text.toString().toInt()
+        val max_temp = max_tempurature.text.toString().toInt()
+        val min_temp = min_tempurature.text.toString().toInt()
+        val acidity = ideal_acidity.text.toString().toFloat()
+        val img_url = ""
+
+        // Default Data
         val grow_zone_num = 2
         val watering_interval = 7
-        val img_url = ""
 
         if (inputCheck(plantname, plantID)){
             // Create plant Object
-            val newPlant = Plant(plantID, plantname, plant_desc, grow_zone_num, watering_interval, img_url)
+            val newPlant = Plant(plantID, plantname, plant_desc, grow_zone_num, watering_interval, img_url, min_temp, max_temp, acidity, water_amount)
             // Add data to Database
             plantModel.addPlantToDatabase(newPlant)
 

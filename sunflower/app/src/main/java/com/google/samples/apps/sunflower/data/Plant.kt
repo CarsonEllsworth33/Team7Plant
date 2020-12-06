@@ -24,12 +24,16 @@ import java.util.Calendar.DAY_OF_YEAR
 
 @Entity(tableName = "plants")
 data class Plant(
-    @PrimaryKey @ColumnInfo(name = "id") val plantId: String,
-    val name: String,
+    @PrimaryKey @ColumnInfo(name = "id") val plantId: String, //genus species
+    val name: String, //common name
     val description: String,
     val growZoneNumber: Int,
     val wateringInterval: Int = 7, // how often the plant should be watered, in days
-    val imageUrl: String = ""
+    val imageUrl: String = "",
+    val min_temp_F: Int,
+    val max_temp_F: Int,
+    val ideal_acidity: Float,
+    val watering_amount: Int, //mL per day
 ) {
 
     /**
