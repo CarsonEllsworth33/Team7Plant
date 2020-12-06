@@ -190,6 +190,20 @@
             app:layout_anchorGravity="bottom|end"
             app:srcCompat="@drawable/ic_plus" />
 
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/statFab"-->
+<!--            style="@style/Widget.MaterialComponents.FloatingActionButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/fab_margin"-->
+<!--            android:backgroundTint="#42BA47"-->
+<!--            android:onClick="@{() -> callback.add(viewModel.plant)}"-->
+<!--            android:tint="@color/sunflower_green_700"-->
+<!--            app:isFabGone="@{!viewModel.isPlanted}"-->
+<!--            app:layout_anchor="@id/appbar"-->
+<!--            app:layout_anchorGravity="bottom|end"-->
+<!--            app:srcCompat="@drawable/ic_my_garden_active" />-->
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

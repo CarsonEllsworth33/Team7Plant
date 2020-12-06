@@ -32,6 +32,7 @@ import kotlinx.coroutines.launch
  */
 class PlantDetailViewModel @AssistedInject constructor(
     plantRepository: PlantRepository,
+    private val repository: PlantRepository,
     private val gardenPlantingRepository: GardenPlantingRepository,
     @Assisted private val plantId: String
 ) : ViewModel() {
@@ -41,6 +42,7 @@ class PlantDetailViewModel @AssistedInject constructor(
 
     fun addPlantToGarden() {
         viewModelScope.launch {
+            repository.changePlanting(plantId, true)
             gardenPlantingRepository.createGardenPlanting(plantId)
         }
     }

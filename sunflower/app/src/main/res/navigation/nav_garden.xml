@@ -26,15 +26,18 @@
         tools:layout="@layout/fragment_view_pager">
 
         <action
-                android:id="@+id/action_view_pager_fragment_to_plant_detail_fragment"
-                app:destination="@id/plant_detail_fragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_view_pager_fragment_to_plant_detail_fragment"
+            app:destination="@id/plant_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_view_pager_fragment_to_new_plant_fragment"
             app:destination="@id/new_plant_fragment" />
+        <action
+            android:id="@+id/action_view_pager_fragment_to_PlantStatsFragment"
+            app:destination="@id/PlantStatsFragment" />
     </fragment>
 
     <fragment
@@ -66,6 +69,9 @@
         <action
             android:id="@+id/action_gallery_fragment_to_new_plant_fragment"
             app:destination="@id/new_plant_fragment" />
+        <action
+            android:id="@+id/action_gallery_fragment_to_statBlockFragment"
+            app:destination="@id/PlantStatsFragment" />
     </fragment>
 
     <fragment
@@ -81,5 +87,20 @@
             android:id="@+id/action_new_plant_fragment_to_view_pager_fragment"
             app:destination="@id/view_pager_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/PlantStatsFragment"
+        android:name="com.google.samples.apps.sunflower.PlantStatsFragment"
+        android:label="StatBlockFragment"
+        tools:layout="@layout/fragment_plant_stats">
 
+    <action
+        android:id="@+id/action_plant_stats_fragment_to_view_pager_fragment"
+        app:destination="@id/view_pager_fragment" />
+    <action
+        android:id="@+id/action_view_pager_fragment_to_plant_stats_fragment"
+        app:destination="@id/PlantStatsFragment" />
+        <argument
+            android:name="plantId"
+            app:argType="string" />
+    </fragment>
 </navigation>

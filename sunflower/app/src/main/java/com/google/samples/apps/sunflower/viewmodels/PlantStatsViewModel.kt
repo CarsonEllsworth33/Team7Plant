@@ -32,18 +32,12 @@ import kotlinx.coroutines.launch
  */
 class PlantStatsViewModel @AssistedInject constructor(
     plantRepository: PlantRepository,
-    private val gardenPlantingRepository: GardenPlantingRepository,
+    gardenPlantingRepository: GardenPlantingRepository,
     @Assisted private val plantId: String
 ) : ViewModel() {
 
     val isPlanted = gardenPlantingRepository.isPlanted(plantId)
     val plant = plantRepository.getPlant(plantId)
-
-    fun addPlantToGarden() {
-        viewModelScope.launch {
-            gardenPlantingRepository.createGardenPlanting(plantId)
-        }
-    }
 
     fun hasValidUnsplashKey() = (BuildConfig.UNSPLASH_ACCESS_KEY != "null")
 

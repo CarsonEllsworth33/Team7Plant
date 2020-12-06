@@ -34,6 +34,8 @@ class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     val plantDateString: String = dateFormat.format(gardenPlanting.plantDate.time)
     val plantId
         get() = plant.plantId
+    val isPlanted
+        get() = plant.isPlanted
 
     companion object {
         private val dateFormat = SimpleDateFormat("MMM d, yyyy", Locale.US)

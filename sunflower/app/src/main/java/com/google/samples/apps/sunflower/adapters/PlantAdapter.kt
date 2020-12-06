@@ -33,6 +33,7 @@ import com.google.samples.apps.sunflower.databinding.ListItemPlantBinding
  */
 class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlantViewHolder(
             ListItemPlantBinding.inflate(
@@ -63,11 +64,20 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
             plant: Plant,
             view: View
         ) {
-            val direction =
-                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
-                    plant.plantId
-                )
-            view.findNavController().navigate(direction)
+            if(!plant.isPlanted) {
+                val direction =
+                        HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
+                                plant.plantId
+                        )
+                view.findNavController().navigate(direction)
+            }
+            else{
+                val direction =
+                        HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantStatsFragment(
+                                plant.plantId
+                        )
+                view.findNavController().navigate(direction)
+            }
         }
 
         fun bind(item: Plant) {

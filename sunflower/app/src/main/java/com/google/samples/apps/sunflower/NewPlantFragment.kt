@@ -43,7 +43,6 @@ class NewPlantFragment : Fragment() {
 
     private val plantModel: PlantListViewModel by viewModels()
 
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -66,10 +65,11 @@ class NewPlantFragment : Fragment() {
         val grow_zone_num = 2
         val watering_interval = 7
         val img_url = ""
+        val isPlanted = false
 
         if (inputCheck(plantname, plantID)){
             // Create plant Object
-            val newPlant = Plant(plantID, plantname, plant_desc, grow_zone_num, watering_interval, img_url)
+            val newPlant = Plant(plantID, plantname, plant_desc, grow_zone_num, watering_interval, img_url, isPlanted)
             // Add data to Database
             plantModel.addPlantToDatabase(newPlant)
 
