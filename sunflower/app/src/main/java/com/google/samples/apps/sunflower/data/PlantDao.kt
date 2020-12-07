@@ -44,7 +44,7 @@ interface PlantDao {
     suspend fun insertNew(plant: Plant)
 
     @Query("UPDATE plants SET isPlanted = :planting where id = :plantId")
-    fun changePlanting(plantId: String, planting: Boolean)
+    suspend fun changePlanting(plantId: String, planting: Boolean)
 
     @Query("SELECT isPlanted FROM plants where id = :plantId")
     fun checkPlanting(plantId: String): Boolean

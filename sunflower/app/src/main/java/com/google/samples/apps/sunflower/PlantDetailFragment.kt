@@ -21,6 +21,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.core.widget.NestedScrollView
@@ -72,6 +74,7 @@ class PlantDetailFragment : Fragment() {
             callback = Callback { plant ->
                 plant?.let {
                     hideAppBarFab(fab)
+//                    hideDetailText(plantDescription)
                     plantDetailViewModel.addPlantToGarden()
                     Snackbar.make(root, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG)
                         .show()
@@ -160,6 +163,10 @@ class PlantDetailFragment : Fragment() {
         behavior.isAutoHideEnabled = false
         fab.hide()
     }
+
+//    private fun hideDetailText(text: TextView) {
+//        text.visibility = View.INVISIBLE
+//    }
 
     fun interface Callback {
         fun add(plant: Plant?)

@@ -20,24 +20,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.sunflower.BuildConfig
-import com.google.samples.apps.sunflower.PlantDetailFragment
+import com.google.samples.apps.sunflower.PlantStatsFragment
 import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.launch
 
+
 /**
- * The ViewModel used in [PlantDetailFragment].
+ * The ViewModel used in [PlantStatsFragment].
  */
 class PlantStatsViewModel @AssistedInject constructor(
     plantRepository: PlantRepository,
     gardenPlantingRepository: GardenPlantingRepository,
     @Assisted private val plantId: String
 ) : ViewModel() {
-
-    val isPlanted = gardenPlantingRepository.isPlanted(plantId)
-    val plant = plantRepository.getPlant(plantId)
 
     fun hasValidUnsplashKey() = (BuildConfig.UNSPLASH_ACCESS_KEY != "null")
 

@@ -44,6 +44,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import android.widget.LinearLayout
 import androidx.annotation.ContentView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.widget.NestedScrollView
@@ -52,7 +53,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.samples.apps.sunflower.adapters.statBlockAdapter
+import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.data.TopSpacingItemDecoration
 import com.google.samples.apps.sunflower.data.dummyStats
 import com.google.samples.apps.sunflower.databinding.FragmentNewPlantBinding
@@ -65,24 +69,23 @@ import kotlinx.android.synthetic.main.fragment_plant_stats.*
 import javax.inject.Inject
 
 
+
 /**
  * A fragment representing a single Plant stats screen.
  */
 @AndroidEntryPoint
 class PlantStatsFragment : Fragment() {
 
-    private lateinit var binding: FragmentPlantStatsBinding
-
     private val args: PlantStatsFragmentArgs by navArgs()
 
     private lateinit var statBlockAdapter: statBlockAdapter
 
     @Inject
-    lateinit var plantStatsViewModelFactory: PlantStatsViewModel.AssistedFactory
+    lateinit var plantDetailViewModelFactory: PlantDetailViewModel.AssistedFactory
 
-    private val plantStatsViewModel: PlantStatsViewModel by viewModels {
-        PlantStatsViewModel.provideFactory(
-                plantStatsViewModelFactory,
+    private val plantDetailViewModel: PlantDetailViewModel by viewModels {
+        PlantDetailViewModel.provideFactory(
+                plantDetailViewModelFactory,
                 args.plantId
         )
     }
@@ -92,25 +95,33 @@ class PlantStatsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPlantStatsBinding.inflate(
+        val binding = DataBindingUtil.inflate<FragmentPlantStatsBinding>(
                 inflater,
+                R.layout.fragment_plant_stats,
                 container,
                 false
-        )
+        ).apply {
+            viewModel = plantDetailViewModel
+            lifecycleOwner = viewLifecycleOwner
+            callback = PlantDetailFragment.Callback { }
+            initRecyclerView()
+            addDataSet()
+
 
 //        galleryNav.setOnClickListener { navigateToGallery() }
 
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
+            toolbar.setNavigationOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
 
-        toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.action_share -> {
-                    createShareIntent()
-                    true
+            toolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_share -> {
+                        createShareIntent()
+                        true
+                    }
+                    else -> false
                 }
-                else -> false
             }
         }
         setHasOptionsMenu(true)
@@ -118,44 +129,38 @@ class PlantStatsFragment : Fragment() {
         return binding.root
     }
 
-    // Helper function for calling a share functionality.
-    // Should be used when user presses a share button/menu item.
-    @Suppress("DEPRECATION")
-    private fun createShareIntent() {
-        val shareText = plantStatsViewModel.plant.value.let { plant ->
-            if (plant == null) {
-                ""
-            } else {
-                getString(R.string.share_text_plant, plant.name)
+
+        // Helper function for calling a share functionality.
+        // Should be used when user presses a share button/menu item.
+        @Suppress("DEPRECATION")
+        private fun createShareIntent() {
+            val shareText = plantDetailViewModel.plant.value.let { plant ->
+                if (plant == null) {
+                    ""
+                } else {
+                    getString(R.string.share_text_plant, plant.name)
+                }
+            }
+            val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+                    .setText(shareText)
+                    .setType("text/plain")
+                    .createChooserIntent()
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+            startActivity(shareIntent)
+        }
+
+        private fun addDataSet() {
+            val data = dummyStats.createDataSet()
+            statBlockAdapter.submitList(data)
+        }
+
+        private fun initRecyclerView() {
+            statsView.apply {
+                layoutManager = LinearLayoutManager(this.context)
+                val topSpacingDecoration = TopSpacingItemDecoration(30)
+                addItemDecoration(topSpacingDecoration)
+                statBlockAdapter = statBlockAdapter()
+                adapter = statBlockAdapter
             }
         }
-        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
-                .setText(shareText)
-                .setType("text/plain")
-                .createChooserIntent()
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-        startActivity(shareIntent)
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initRecyclerView()
-        addDataSet()
-    }
-
-    private fun addDataSet(){
-        val data = dummyStats.createDataSet()
-        statBlockAdapter.submitList(data)
-    }
-
-    private fun initRecyclerView(){
-        statsView.apply{
-            layoutManager = LinearLayoutManager(this.context)
-            val topSpacingDecoration = TopSpacingItemDecoration(30)
-            addItemDecoration(topSpacingDecoration)
-            statBlockAdapter = statBlockAdapter()
-            adapter = statBlockAdapter
-        }
-    }
-}
