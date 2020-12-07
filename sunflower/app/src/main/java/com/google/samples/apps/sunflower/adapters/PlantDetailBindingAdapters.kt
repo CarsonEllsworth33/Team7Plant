@@ -64,6 +64,25 @@ fun bindWateringText(textView: TextView, wateringInterval: Int) {
         wateringInterval,
         wateringInterval
     )
+    val water_amount = wateringInterval.toString() + " (mL/day)"
 
-    textView.text = quantityString
+    textView.text = water_amount
+}
+
+@BindingAdapter("mintempText")
+fun bindMinTempText(textView: TextView, mintemp: Int) {
+    val mintempstring =mintemp.toString()
+    textView.text = mintempstring
+}
+
+@BindingAdapter("maxtempText")
+fun bindMaxTempText(textView: TextView, maxtemp: Int) {
+    val maxtempstring = maxtemp.toString()
+    textView.text = maxtempstring
+}
+
+@BindingAdapter("acidityText")
+fun bindTempText(textView: TextView, ideal_acidity: Float) {
+    val aciditystring = ideal_acidity.toString() + " (pH)"
+    textView.text = aciditystring
 }
