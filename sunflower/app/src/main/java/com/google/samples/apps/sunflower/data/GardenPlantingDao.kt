@@ -17,11 +17,7 @@
 package com.google.samples.apps.sunflower.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 
 /**
  * The Data Access Object for the [GardenPlanting] class.
@@ -43,7 +39,10 @@ interface GardenPlantingDao {
     fun getPlantedGardens(): LiveData<List<PlantAndGardenPlantings>>
 
     @Insert
-    suspend fun insertGardenPlanting(gardenPlanting: GardenPlanting): Long
+    suspend fun insertGardenPlanting(gardenPlanting: GardenPlanting, ): Long
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGardenPlantings(gardenPlantings: List<GardenPlanting>)
 
     @Delete
     suspend fun deleteGardenPlanting(gardenPlanting: GardenPlanting)

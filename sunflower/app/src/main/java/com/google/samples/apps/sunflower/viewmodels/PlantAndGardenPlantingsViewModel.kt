@@ -24,19 +24,31 @@ class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     private val plant = checkNotNull(plantings.plant)
     private val gardenPlanting = plantings.gardenPlantings[0]
 
-    val waterDateString: String = dateFormat.format(gardenPlanting.lastWateringDate.time)
+    val waterDateString get() = dateFormat.format(gardenPlanting.lastWateringDate)//dateFormat.format(gardenPlanting.lastWateringDate.time)
     val wateringInterval
         get() = plant.wateringInterval
     val imageUrl
         get() = plant.imageUrl
     val plantName
         get() = plant.name
-    val plantDateString: String = dateFormat.format(gardenPlanting.plantDate.time)
+    val plantDateString get() = dateFormat.format(gardenPlanting.plantDate)//dateFormat.format(gardenPlanting.plantDate.time)
     val plantId
         get() = plant.plantId
     val isPlanted
         get() = plant.isPlanted
 
+    val nickname
+        get() = gardenPlanting.nickname
+    val real_id
+        get() = gardenPlanting.gardenPlantingId
+    val min_temp
+        get() = plant.min_temp_F
+    val max_temp
+        get() = plant.max_temp_F
+    val acidity
+        get() = plant.ideal_acidity
+    val watering
+        get() = plant.watering_amount
     companion object {
         private val dateFormat = SimpleDateFormat("MMM d, yyyy", Locale.US)
     }

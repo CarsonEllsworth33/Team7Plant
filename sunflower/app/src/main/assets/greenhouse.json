@@ -1,0 +1,47 @@
+[
+  {
+    "name": "African Violet",
+    "plantId": "Streptocarpus",
+    "description": "African violets are common houseplants because they flower reliably and are easy to grow. Plants have fuzzy leaves with pink, purple, or white flowers in various shades. They grow well in the low humidity and moderate temperature of most home and office environments. With good care, plants can live and bloom for decades.",
+    "growZoneNumber": 3,
+    "wateringInterval": 7,
+    "min_temp_F": 65,
+    "max_temp_F": 75,
+    "ideal_acidity": 6,
+    "watering_amount": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Beetroot_jm26647.jpg",
+    "plant_date": 1607209177208,
+    "nickname": "Living Room Plant",
+    "id": 0
+  },
+  {
+    "name": "Coral Berry",
+    "plantId": "Symphoricarpos",
+    "description": "Coralberry is a low-growing, spreading shrub with arching stems that produce clusters of purplish red fruits in the fall. It is a good food source for several species of bird.  This shrub is native to Eastern U.S. and a good plant for naturalizing in open woodlands or used to stabilize steep slopes because of its suckering habit.",
+    "growZoneNumber": 2,
+    "wateringInterval": 7,
+    "min_temp_F": 60,
+    "max_temp_F": 75,
+    "ideal_acidity": 7,
+    "watering_amount": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg",
+    "plant_date": 1607209177208,
+    "nickname": "Living Room Plant",
+    "id": 1
+  },
+  {
+    "name": "Elephant Ear",
+    "plantId": "Colocasia",
+    "description": "The elephant ear plant (Colocasia) provides a bold tropical effect in nearly any landscape setting. In fact, these plants are commonly grown for their large, tropical-looking foliage, which is reminiscent of elephant ears.",
+    "growZoneNumber": 2,
+    "wateringInterval": 7,
+    "min_emp_F": 65,
+    "max_temp_F": 75,
+    "ideal_acidity": 8,
+    "watering_amount": 30,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/A_scene_of_Coriander_leaves.JPG",
+    "plant_date": 1607209177208,
+    "nickname": "Living Room Plant",
+    "id": 2
+  }
+]

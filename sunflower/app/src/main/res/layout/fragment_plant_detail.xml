@@ -139,8 +139,86 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plant_watering_header"
-                    app:wateringText="@{viewModel.plant.wateringInterval}"
+                    app:wateringText="@{viewModel.plant.watering_amount}"
                     tools:text="every 7 days" />
+
+                <TextView
+                    android:id="@+id/plant_temp_header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center_horizontal"
+                    android:text="Tempurature Range (F)"
+                    android:textColor="?attr/colorAccent"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_watering" />
+
+                <TextView
+                    android:id="@+id/hyphen"
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=" - "
+                    app:layout_constraintEnd_toStartOf="@+id/plant_temp_max"
+                    app:layout_constraintStart_toEndOf="@+id/plant_temp_min"
+                    app:layout_constraintTop_toBottomOf="@id/plant_temp_header"
+                    tools:text=" - " />
+
+                <TextView
+                    android:id="@+id/plant_temp_min"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="right"
+                    app:layout_constraintEnd_toStartOf="@+id/hyphen"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_temp_header"
+                    app:mintempText="@{viewModel.plant.min_temp_F}"
+                    tools:text="78" />
+
+                <TextView
+                    android:id="@+id/plant_temp_max"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="left"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/hyphen"
+                    app:layout_constraintTop_toBottomOf="@id/plant_temp_header"
+                    app:maxtempText="@{viewModel.plant.max_temp_F}"
+                    tools:text="80" />
+
+                <TextView
+                    android:id="@+id/plant_acidity_header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center_horizontal"
+                    android:text="Ideal Acidity:"
+                    android:textColor="?attr/colorAccent"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_temp_min" />
+
+                <TextView
+                    android:id="@+id/plant_acidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_acidity_header"
+                    app:acidityText="@{viewModel.plant.ideal_acidity}"
+                    tools:text="7 (pH)" />
 
                 <ImageView
                     android:id="@+id/gallery_nav"
@@ -164,11 +242,11 @@
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
-                    android:textIsSelectable="true"
                     android:minHeight="@dimen/plant_description_min_height"
+                    android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/plant_watering"
+                    app:layout_constraintTop_toBottomOf="@id/plant_acidity"
                     app:renderHtml="@{viewModel.plant.description}"
                     tools:text="Details about the plant" />
 

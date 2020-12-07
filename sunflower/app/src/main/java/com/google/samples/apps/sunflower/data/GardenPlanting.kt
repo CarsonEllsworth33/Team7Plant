@@ -45,16 +45,17 @@ data class GardenPlanting(
      * Indicates when the [Plant] was planted. Used for showing notification when it's time
      * to harvest the plant.
      */
-    @ColumnInfo(name = "plant_date") val plantDate: Calendar = Calendar.getInstance(),
+    @ColumnInfo(name = "plant_date") val plantDate: Long = 1607209177208,
 
     /**
      * Indicates when the [Plant] was last watered. Used for showing notification when it's
      * time to water the plant.
      */
     @ColumnInfo(name = "last_watering_date")
-    val lastWateringDate: Calendar = Calendar.getInstance()
+    val lastWateringDate: Long = 1607209177208,
+    val nickname: String = plantId
 ) {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) // take out autoGenerate?
     @ColumnInfo(name = "id")
     var gardenPlantingId: Long = 0
 }

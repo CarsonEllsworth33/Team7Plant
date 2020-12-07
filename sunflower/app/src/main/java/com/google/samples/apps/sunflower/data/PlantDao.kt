@@ -37,6 +37,8 @@ interface PlantDao {
     @Query("SELECT * FROM plants WHERE id = :plantId")
     fun getPlant(plantId: String): LiveData<Plant>
 
+    // do I need to add anything here to get some data from entity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(plants: List<Plant>)
 
