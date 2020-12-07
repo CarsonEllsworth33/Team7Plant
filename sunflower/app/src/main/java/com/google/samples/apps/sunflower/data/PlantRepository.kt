@@ -36,7 +36,7 @@ class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
         plantDao.insertNew(newplant)
     }
 
-    suspend fun changePlanting(plantId: String, planting: Boolean) = plantDao.changePlanting(plantId, planting)
-
-    fun checkPlanting(plantId: String) = plantDao.checkPlanting(plantId)
+//    suspend fun changePlanting(plantId: String, planting: Boolean) = plantDao.changePlanting(plantId, planting)
+//
+//    fun checkPlanting(plantId: String) = plantDao.checkPlanting(plantId)
 }

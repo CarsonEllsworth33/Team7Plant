@@ -34,8 +34,8 @@ class PlantAndGardenPlantingsViewModel(plantings: PlantAndGardenPlantings) {
     val plantDateString get() = dateFormat.format(gardenPlanting.plantDate)//dateFormat.format(gardenPlanting.plantDate.time)
     val plantId
         get() = plant.plantId
-    val isPlanted
-        get() = plant.isPlanted
+//    val isPlanted
+//        get() = plant.isPlanted
 
     val nickname
         get() = gardenPlanting.nickname

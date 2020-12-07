@@ -244,11 +244,30 @@
                     android:layout_marginEnd="@dimen/margin_small"
                     android:minHeight="@dimen/plant_description_min_height"
                     android:textIsSelectable="true"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/plant_acidity"
                     app:renderHtml="@{viewModel.plant.description}"
                     tools:text="Details about the plant" />
+
+                <TextView
+                    android:id="@+id/plant_stats"
+                    style="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:autoText="false"
+                    android:fontFamily="sans-serif-black"
+                    android:minHeight="@dimen/plant_description_min_height"
+                    android:text="Water levels: Healthy \n\nTemperature levels: 79 F \n\nCurrent Acidity: 7 pH"
+                    android:textColor="#DC388A43"
+                    android:textIsSelectable="true"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_acidity" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

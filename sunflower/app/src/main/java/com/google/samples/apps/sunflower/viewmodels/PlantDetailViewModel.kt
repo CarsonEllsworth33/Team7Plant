@@ -42,7 +42,7 @@ class PlantDetailViewModel @AssistedInject constructor(
 
     fun addPlantToGarden() {
         viewModelScope.launch {
-            repository.changePlanting(plantId, true)
+            //repository.changePlanting(plantId, true)
             gardenPlantingRepository.createGardenPlanting(plantId)
         }
     }

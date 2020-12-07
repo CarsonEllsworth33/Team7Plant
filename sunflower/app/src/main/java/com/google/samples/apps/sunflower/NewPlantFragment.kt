@@ -67,7 +67,6 @@ class NewPlantFragment : Fragment() {
         val max_temp = max_tempurature.text.toString().toInt()
         val min_temp = min_tempurature.text.toString().toInt()
         val acidity = ideal_acidity.text.toString().toFloat()
-        val img_url = ""
 
         // Default Data
         val grow_zone_num = 2

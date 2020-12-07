@@ -30,7 +30,6 @@ data class Plant(
     val growZoneNumber: Int,
     val wateringInterval: Int = 7, // how often the plant should be watered, in days
     val imageUrl: String = "",
-    var isPlanted: Boolean,
     val min_temp_F: Int,
     val max_temp_F: Int,
     val ideal_acidity: Float,

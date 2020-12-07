@@ -73,8 +73,10 @@ class PlantDetailFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             callback = Callback { plant ->
                 plant?.let {
+
                     hideAppBarFab(fab)
-//                    hideDetailText(plantDescription)
+                    hideDetailText(plantDescription)
+                    showStatsTest(plantStats)
                     plantDetailViewModel.addPlantToGarden()
                     Snackbar.make(root, R.string.added_plant_to_garden, Snackbar.LENGTH_LONG)
                         .show()
@@ -164,9 +166,13 @@ class PlantDetailFragment : Fragment() {
         fab.hide()
     }
 
-//    private fun hideDetailText(text: TextView) {
-//        text.visibility = View.INVISIBLE
-//    }
+    private fun hideDetailText(text: TextView) {
+        text.visibility = View.INVISIBLE
+    }
+
+    private fun showStatsTest(text: TextView) {
+        text.visibility = View.VISIBLE
+    }
 
     fun interface Callback {
         fun add(plant: Plant?)
