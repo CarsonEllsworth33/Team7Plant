@@ -41,12 +41,6 @@
             android:fitsSystemWindows="true"
             android:theme="@style/Theme.Sunflower.AppBarOverlay">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_detail_back_no_circle"
-                app:title="@string/add_new_plant_title"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -75,19 +69,28 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/new_plant_sunlight"
-                android:hint="Recommended amount of sunlight"
-                />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/new_plant_water"
-                android:hint="Amount of water needed per day (oz)"/>
+                android:hint="Amount of water needed per day (mL)"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/new_plant_tempurature"
-                android:hint="Average Healthy Tempurature"/>
+                android:id="@+id/max_tempurature"
+                android:hint="Maximum Healthy Tempurature"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/min_tempurature"
+                android:hint="Minimum Healthy Tempurature"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ideal_acidity"
+                android:hint="Ideal Acidity Level (pH)"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/plant_desc"
+                android:hint="Short Description"/>
 
 
             <LinearLayout

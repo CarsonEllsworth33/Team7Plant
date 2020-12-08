@@ -27,21 +27,19 @@ import com.google.samples.apps.sunflower.generated.callback.OnClickListener
  * The Data Access Object for the Plant class.
  */
 @Dao
-interface PlantDao {
-    @Query("SELECT * FROM plants ORDER BY name")
-    fun getPlants(): LiveData<List<Plant>>
+interface SensorsDao {
+    @Query("SELECT * FROM sensors ORDER BY gId")
+    fun getAllInfo(): LiveData<List<Sensors>>
 
-    @Query("SELECT * FROM plants WHERE growZoneNumber = :growZoneNumber ORDER BY name")
-    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): LiveData<List<Plant>>
+    @Query("SELECT * FROM sensors WHERE gId = :id ORDER BY sensor")
+    fun getPlantStatus(id: Long): LiveData<List<Sensors>>
 
-    @Query("SELECT * FROM plants WHERE id = :plantId")
-    fun getPlant(plantId: String): LiveData<Plant>
-
-    // do I need to add anything here to get some data from entity?
+    @Query("SELECT * FROM sensors WHERE gId = :id AND sensor = :sens")
+    fun getPlantSensorData(id: Long, sens: String): LiveData<List<Sensors>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(plants: List<Plant>)
-
+    suspend fun insertAll(sensordata: List<Sensors>)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNew(plant: Plant)
+    suspend fun insertOne(sensordata: Sensors)
+
 }
