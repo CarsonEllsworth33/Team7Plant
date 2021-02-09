@@ -54,4 +54,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- hello darkness my old friend -->
+    <string name="moisture_level" translation_description="The value for moisture of the plant currently being inspected" translatable="false">20 mL</string>
+    <string name="acidity_level" translation_description="The value for acidity of the plant currently being inspected" translatable="false">7 pH</string>
+    <string name="temperature_level" translation_description="The value for temperature of the plant currently being inspected" translatable="false">72 F</string>
+
 </resources>
