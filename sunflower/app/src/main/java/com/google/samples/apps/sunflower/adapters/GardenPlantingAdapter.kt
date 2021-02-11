@@ -63,7 +63,7 @@ class GardenPlantingAdapter :
 
         private fun navigateToPlant(plantId: String, view: View) {
             val direction = HomeViewPagerFragmentDirections
-                .actionViewPagerFragmentToPlantDetailFragment(plantId)
+                .actionViewPagerFragmentToCustomPlantFragment(plantId)
             view.findNavController().navigate(direction)
         }
 

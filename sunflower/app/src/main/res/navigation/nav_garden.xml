@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_view_pager_fragment_to_new_plant_fragment"
             app:destination="@id/new_plant_fragment" />
+        <action
+            android:id="@+id/action_view_pager_fragment_to_customPlantFragment"
+            app:destination="@id/customPlantFragment" />
     </fragment>
 
     <fragment
@@ -80,6 +83,13 @@
         <action
             android:id="@+id/action_new_plant_fragment_to_view_pager_fragment"
             app:destination="@id/view_pager_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customPlantFragment"
+        android:name="com.google.samples.apps.sunflower.CustomPlantFragment"
+        android:label="fragment_custom_plant"
+        tools:layout="@layout/fragment_custom_plant" >
+        <argument android:name="plantId" />
     </fragment>
 
 </navigation>
