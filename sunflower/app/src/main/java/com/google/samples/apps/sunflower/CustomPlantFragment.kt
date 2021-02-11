@@ -42,6 +42,6 @@ class CustomPlantFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        testName.text = args.plantId
+        plant_detail_name.text = args.plantId
     }
 }
