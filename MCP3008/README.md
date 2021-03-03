@@ -2,6 +2,8 @@
 
 [mcp3008 datasheet](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)  
 [mcp3008 RPi wiring diagram](https://forge.codesys.com/drv/mcp3008/home/Home/attachment/MCP3008_schem.png)  
+[circuit python docs](https://circuitpython.readthedocs.io/en/latest/shared-bindings/index.html)  
+[adafruit MCP3008 RPi Setup](https://learn.adafruit.com/mcp3008-spi-adc/python-circuitpython)  
 
 Import and initial setup information for MCP3008.  
 
