@@ -32,14 +32,19 @@ import com.google.samples.apps.sunflower.utilities.GREENHOUSE_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.SENSOR_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
+import okhttp3.internal.wait
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import java.io.File
 import java.io.FileReader
 // val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 // val checkSensorsRequest = PeriodicWorkRequestBuilder<SensorWorker>().setConstraints(constraints).build()
 //https://raw.githubusercontent.com/BBowdon00/plant_json/main/sensor.json
-final BASE_URL : String = "https://raw.githubusercontent.com/BBowdon00/plant_json/main"
+ val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main"
 class SensorWorker(
         context: Context,
         workerParams: WorkerParameters
@@ -47,53 +52,46 @@ class SensorWorker(
     override suspend fun doWork(): Result = coroutineScope {// access http request
         try {
             //val success: Boolean
-            applicationContext.assets.open(PLANT_DATA_FILENAME).use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
+                val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main/"
+                val retro = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+                val service = retro.create(sensorEndpoint::class.java)
+                val call = service.getSensors()
 
-                    applicationContext.assets.open(SENSOR_DATA_FILENAME).also { inputStream ->
-                        JsonReader(inputStream.reader()).also { jsonReader ->
-                            sensorsList = Gson().fromJson(jsonReader, sensorsType)
-                        }
+                var sensors_data : List<Sensors>? = emptyList()
+                applicationContext.assets.open(SENSOR_DATA_FILENAME).use{inputStream ->
+                    JsonReader(inputStream.reader()).use {
+                        call.enqueue(object: Callback<List<Sensors>> {
+                            override fun onResponse(call: Call<List<Sensors>>, response: Response<List<Sensors>>) {
+
+                               sensors_data = response.body()
+                            }
+
+                            override fun onFailure(call: Call<List<Sensors>>, t: Throwable) {
+                                Log.e(TAG, "Error seeding sensor data.")
+                                print("ONLINE ERROR")
+                            }
+
+                        })
+                        val database = AppDatabase.getInstance(applicationContext)
+                        database.sensorsDao().insertAll(sensors_data)
                     }
-                    val database = AppDatabase.getInstance(applicationContext)
-                    database.plantDao().insertAll(plantList)
-                    database.gardenPlantingDao().insertGardenPlantings(greenhouseList)
-                    database.sensorsDao().insertAll(sensorsList)
-
-                }
-
-                Result.success()
-            }
-            /*
-            applicationContext.assets.open(SENSOR_DATA_FILENAME).use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
-                    val sensorsType = object : TypeToken<List<Sensors>>() {}.type
-                    val sensorsList: List<Sensors> = Gson().fromJson(jsonReader, sensorsType)
-                    val database = AppDatabase.getInstance(applicationContext)
-                    database.sensorsDao().insertAll(sensorsList)
-
                     Result.success()
-                }*/
-        }
+                }
+            }
+
         catch (ex: Exception) {
             Log.e(TAG, "Error fetching online database", ex)
             Result.failure()
         }
     }
-    fun networkCall()
-    {
-        val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main/"
-        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
-
-    }
-
     companion object {
-        private const val TAG = "SeedDatabaseWorker"
+        private const val TAG = "SensorWorker"
     }
 }
 
 interface sensorEndpoint
 {
     @GET("sensor.json")
-    fun getSensors()
+    fun getSensors() : Call<List<Sensors>>
 }
+

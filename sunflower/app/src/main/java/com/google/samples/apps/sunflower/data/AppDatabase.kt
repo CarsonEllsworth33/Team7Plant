@@ -22,10 +22,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.work.*
 import com.google.samples.apps.sunflower.utilities.DATABASE_NAME
 import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
+import com.google.samples.apps.sunflower.workers.SensorWorker
+import java.util.concurrent.TimeUnit
 
 /**
  * The Room database for this app
@@ -59,10 +60,18 @@ abstract class AppDatabase : RoomDatabase() {
                             super.onCreate(db)
                             val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
                             WorkManager.getInstance(context).enqueue(request)
-                            // val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-                            // val checkSensorsRequest = PeriodicWorkRequestBuilder<SensorWorker>().setConstraints(constraints).build()
-                            // WorkManager.getInstance(context).enqueueUniquePeriodicWork(checkSensorsRequest)
+                            val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+                            val checkSensorsRequest = PeriodicWorkRequestBuilder<SensorWorker>(15, TimeUnit.MINUTES).setConstraints(constraints).build()
+                            WorkManager.getInstance(context).enqueueUniquePeriodicWork("sensors", ExistingPeriodicWorkPolicy.REPLACE, checkSensorsRequest)
                         }
+                        /**
+                        override fun onOpen(db: SupportSQLiteDatabase)
+                        {
+                            super.onOpen(db)
+
+
+                        }
+                        **/
                     }
                 )
                 .build()

@@ -4,35 +4,5 @@
 		"sensor": "temperature",
 		"time": "12-4-2020",
 		"value": 66
-	},
-	{
-		"gId": 1,
-		"sensor": "temperature",
-		"time": "12-5-2020",
-		"value": 62
-	},
-	{
-		"gId": 1,
-		"sensor": "temperature",
-		"time": "12-6-2020",
-		"value": 80
-	},
-	{
-		"gId": 1,
-		"sensor": "temperature",
-		"time": "12-7-2020",
-		"value": 84
-	},
-	{
-		"gId": 1,
-		"sensor": "temperature",
-		"time": "12-8-2020",
-		"value": 85
-	},
-	{
-		"gId": 1,
-		"sensor": "temperature",
-		"time": "12-9-2020",
-		"value": 86
 	}
 ]

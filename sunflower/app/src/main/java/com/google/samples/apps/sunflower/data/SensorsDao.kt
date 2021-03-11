@@ -38,7 +38,7 @@ interface SensorsDao {
     fun getPlantSensorData(id: Long, sens: String): LiveData<List<Sensors>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(sensordata: List<Sensors>)
+    suspend fun insertAll(sensordata: List<Sensors>?)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOne(sensordata: Sensors)
 
