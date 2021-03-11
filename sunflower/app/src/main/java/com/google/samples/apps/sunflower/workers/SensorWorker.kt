@@ -32,10 +32,14 @@ import com.google.samples.apps.sunflower.utilities.GREENHOUSE_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.SENSOR_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.io.FileReader
 // val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 // val checkSensorsRequest = PeriodicWorkRequestBuilder<SensorWorker>().setConstraints(constraints).build()
+//https://raw.githubusercontent.com/BBowdon00/plant_json/main/sensor.json
+final BASE_URL : String = "https://raw.githubusercontent.com/BBowdon00/plant_json/main"
 class SensorWorker(
         context: Context,
         workerParams: WorkerParameters
@@ -76,8 +80,20 @@ class SensorWorker(
             Result.failure()
         }
     }
+    fun networkCall()
+    {
+        val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main/"
+        Retrofit retro = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+
+    }
 
     companion object {
         private const val TAG = "SeedDatabaseWorker"
     }
+}
+
+interface sensorEndpoint
+{
+    @GET("sensor.json")
+    fun getSensors()
 }
