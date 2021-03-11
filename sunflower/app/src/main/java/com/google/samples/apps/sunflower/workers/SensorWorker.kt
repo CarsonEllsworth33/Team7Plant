@@ -18,6 +18,7 @@ package com.google.samples.apps.sunflower.workers
 
 import android.content.Context
 import android.util.Log
+import android.util.Log.INFO
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.impl.background.greedy.GreedyScheduler
@@ -32,6 +33,7 @@ import com.google.samples.apps.sunflower.utilities.GREENHOUSE_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.SENSOR_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import okhttp3.internal.wait
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,7 +46,7 @@ import java.io.FileReader
 // val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 // val checkSensorsRequest = PeriodicWorkRequestBuilder<SensorWorker>().setConstraints(constraints).build()
 //https://raw.githubusercontent.com/BBowdon00/plant_json/main/sensor.json
- val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main"
+var sensors_data : List<Sensors> = emptyList()
 class SensorWorker(
         context: Context,
         workerParams: WorkerParameters
@@ -56,14 +58,25 @@ class SensorWorker(
                 val retro = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
                 val service = retro.create(sensorEndpoint::class.java)
                 val call = service.getSensors()
-
+                var called = false
                 var sensors_data : List<Sensors>? = emptyList()
-                applicationContext.assets.open(SENSOR_DATA_FILENAME).use{inputStream ->
-                    JsonReader(inputStream.reader()).use {
+                //applicationContext.assets.open(SENSOR_DATA_FILENAME).use{inputStream ->
+                 //   JsonReader(inputStream.reader()).use {
                         call.enqueue(object: Callback<List<Sensors>> {
                             override fun onResponse(call: Call<List<Sensors>>, response: Response<List<Sensors>>) {
-
+                                if(response.code()==200)
+                                {
+                                    Log.d(TAG, "GOOD CODE")
+                                }
+                                System.out.print(response.toString())
                                sensors_data = response.body()
+                                System.out.print("Response: " + response.body())
+                                Log.i(TAG, "RECEIVED SENSOR DATA FROM INTERNET")
+                                System.out.println("RECEIVED SENSOR DATA FROM INTERNET")
+                                System.out.print(sensors_data)
+                                called = true
+
+
                             }
 
                             override fun onFailure(call: Call<List<Sensors>>, t: Throwable) {
@@ -72,11 +85,19 @@ class SensorWorker(
                             }
 
                         })
-                        val database = AppDatabase.getInstance(applicationContext)
-                        database.sensorsDao().insertAll(sensors_data)
-                    }
+
+            while(called != true)
+            {
+                delay(1000)
+            }
+            val database = AppDatabase.getInstance(applicationContext)
+            database.sensorsDao().insertAll(sensors_data)
+            Log.d(TAG, "Sensor data has been inserted")
+            System.out.println("Sensor data is: " + sensors_data)
+            called = false
+                    //}
                     Result.success()
-                }
+                //}
             }
 
         catch (ex: Exception) {
