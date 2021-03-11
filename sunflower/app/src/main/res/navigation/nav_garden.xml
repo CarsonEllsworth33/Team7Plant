@@ -90,6 +90,33 @@
         android:label="fragment_custom_plant"
         tools:layout="@layout/fragment_custom_plant" >
         <argument android:name="plantId" />
+        <action
+            android:id="@+id/action_customPlantFragment_to_plantMoistureGraphFragment"
+            app:destination="@id/plantMoistureGraphFragment" />
+        <action
+            android:id="@+id/action_customPlantFragment_to_plantAcidityGraphFragment"
+            app:destination="@id/plantAcidityGraphFragment" />
+        <action
+            android:id="@+id/action_customPlantFragment_to_plantTemperatureGraphFragment"
+            app:destination="@id/plantTemperatureGraphFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantMoistureGraphFragment"
+        android:name="com.google.samples.apps.sunflower.PlantMoistureGraphFragment"
+        android:label="PlantMoistureGraphFragment" >
+        <argument android:name="plantId" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantAcidityGraphFragment"
+        android:name="com.google.samples.apps.sunflower.PlantAcidityGraphFragment"
+        android:label="PlantAcidityGraphFragment" >
+        <argument android:name="plantId" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantTemperatureGraphFragment"
+        android:name="com.google.samples.apps.sunflower.PlantTemperatureGraphFragment"
+        android:label="PlantTemperatureGraphFragment" >
+        <argument android:name="plantId" />
     </fragment>
 
 </navigation>

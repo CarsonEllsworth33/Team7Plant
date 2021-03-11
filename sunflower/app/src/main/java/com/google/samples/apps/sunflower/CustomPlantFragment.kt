@@ -21,8 +21,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_custom_plant.*
+import kotlinx.android.synthetic.main.fragment_custom_plant.view.*
+import android.content.Intent
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.ShareCompat
+import androidx.core.widget.NestedScrollView
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
+import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.databinding.FragmentPlantDetailBinding
+import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +57,18 @@ class CustomPlantFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_custom_plant, container, false)
+        view.mButton.setOnClickListener {
+            val direction = CustomPlantFragmentDirections.actionCustomPlantFragmentToPlantMoistureGraphFragment(args.plantId)
+            findNavController().navigate(direction)
+        }
+        view.tButton.setOnClickListener {
+            val direction = CustomPlantFragmentDirections.actionCustomPlantFragmentToPlantTemperatureGraphFragment(args.plantId)
+            findNavController().navigate(direction)
+        }
+        view.aButton.setOnClickListener {
+            val direction = CustomPlantFragmentDirections.actionCustomPlantFragmentToPlantAcidityGraphFragment(args.plantId)
+            findNavController().navigate(direction)
+        }
         return view
     }
 
