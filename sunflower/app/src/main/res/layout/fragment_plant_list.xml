@@ -73,7 +73,7 @@
                     android:text="Add Plant not Listed"
                     android:textColor="?attr/colorPrimary"
                     android:visibility="visible"
-                    app:backgroundTint="?attr/colorOnPrimary"
+                    app:backgroundTint="@color/sunflower_green_700"
                     app:shapeAppearance="@style/ShapeAppearance.Sunflower.Button.Add" />
             </LinearLayout>
         </LinearLayout>

@@ -19,12 +19,12 @@
     <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
     <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#D4DCDB</item>
-        <item name="colorOnPrimary">@color/sunflower_yellow_500</item>
+        <item name="colorOnPrimary">#4CAF50</item>
         <item name="colorPrimaryDark">#858585</item>
         <item name="colorOnSurface">@color/sunflower_black</item>
         <item name="colorAccent">#858585</item>
         <item name="colorSurface">@color/sunflower_gray_50</item>
-        <item name="colorSecondary">@color/sunflower_yellow_500</item>
+        <item name="colorSecondary">@color/sunflower_green_300</item>
         <item name="android:colorBackground">#D4DCDB</item>
     </style>
 

@@ -105,6 +105,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/create_plant"
                     android:layout_width="wrap_content"
@@ -112,7 +113,7 @@
                     android:text="Create New Plant Entry"
                     android:textColor="?attr/colorPrimary"
                     android:visibility="visible"
-                    app:backgroundTint="?attr/colorOnPrimary"
+                    app:backgroundTint="@color/sunflower_green_700"
                     app:shapeAppearance="@style/ShapeAppearance.Sunflower.Button.Add" />
             </LinearLayout>
 

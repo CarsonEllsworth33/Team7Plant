@@ -22,15 +22,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.*
 import kotlinx.android.synthetic.main.fragment_plant_moisture_graph.*
 import kotlinx.android.synthetic.main.fragment_plant_moisture_graph.view.*
+import kotlinx.android.synthetic.main.fragment_plant_temperature_graph.*
 
 
 class PlantMoistureGraphFragment : Fragment() {
@@ -40,65 +40,7 @@ class PlantMoistureGraphFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_plant_moisture_graph, container, false)
-
-
-        //x axis values
-        val xvalues = ArrayList<String>()
-        xvalues.add("Monday")
-        xvalues.add("Tuesday")
-        xvalues.add("Wednesday")
-        xvalues.add("Thursday")
-        xvalues.add("Friday")
-        xvalues.add("Saturday")
-        xvalues.add("Sunday")
-
-
-        // y axis values
-
-        //bar entries
-        val barentries = ArrayList<BarEntry>()
-
-        barentries.add(BarEntry(0f, 35f))
-        barentries.add(BarEntry(1f, 45f))
-        barentries.add(BarEntry(2f, 25f))
-        barentries.add(BarEntry(3f, 50f))
-        barentries.add(BarEntry(4f, 70f))
-        barentries.add(BarEntry(5f, 60f))
-        barentries.add(BarEntry(6f, 80f))
-
-
-        //bardata set
-        var bardataset = BarDataSet(barentries, "Moisture Levels")
-        bardataset.color = resources.getColor(R.color.sunflower_green_700)
-
-        val data = BarData(bardataset)
-        data.barWidth = .9f
-        view.bargraph.data = data
-        view.bargraph.setFitBars(true)
-        view.bargraph.invalidate()
-
-        val l: Legend = view.bargraph.getLegend()
-
-        val leftAxis: YAxis = view.bargraph.getAxisLeft()
-        leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
-        leftAxis.setDrawLabels(true)
-
-
-        view.bargraph.getAxisRight().setEnabled(false)
-
-        val xAxis: XAxis = view.bargraph.getXAxis()
-        xAxis.isEnabled = true
-        xAxis.setDrawLabels(true)
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-
-        val description: Description = view.bargraph.getDescription()
-        description.isEnabled = false
-
-
-
-        view.bargraph.setBackgroundColor((resources.getColor(R.color.design_default_color_background)))
-        view.bargraph.animateXY(3000, 3000)
+        val view =  inflater.inflate(R.layout.fragment_plant_temperature_graph, container, false)
 
         return view
     }
@@ -107,5 +49,62 @@ class PlantMoistureGraphFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.plantNameText.text = args.plantId
         view.graphDataTypeText.text = "Moisture"
+        val xvalue = ArrayList<String>()
+        xvalue.add("Monday")
+        xvalue.add("Tuesday")
+        xvalue.add("Wednesday")
+        xvalue.add("Thursday")
+        xvalue.add("Friday")
+        xvalue.add("Saturday")
+        xvalue.add("Sunday")
+        //Part1
+        val entries = ArrayList<Entry>()
+
+//Part2
+        entries.add(Entry(1f, 10f))
+        entries.add(Entry(2f, 2f))
+        entries.add(Entry(3f, 7f))
+        entries.add(Entry(4f, 20f))
+        entries.add(Entry(5f, 16f))
+
+//Part3
+        val vl = LineDataSet(entries, "Moisture")
+        vl.setColor(R.color.sunflower_green_500)
+        vl.setCircleColor(R.color.sunflower_green_500)
+        vl.fillColor = R.color.sunflower_green_300
+
+//Part4
+        vl.setDrawValues(false)
+        vl.setDrawFilled(true)
+        vl.lineWidth = 3f
+        vl.color = R.color.sunflower_green_500
+        vl.fillColor = R.color.sunflower_green_500
+        vl.fillAlpha = R.color.sunflower_green_300
+
+//Part5
+//        lineChart.xAxis.labelRotationAngle = 0f
+
+//Part6
+        val data = LineData(vl)
+
+        lineChart.data = data
+//Part7
+        //lineChart.axisRight.isEnabled = false
+        //lineChart.xAxis.axisMaximum = j+0.1f
+
+//Part8
+        lineChart.setTouchEnabled(true)
+        lineChart.setPinchZoom(true)
+
+//Part9
+        lineChart.description.text = "Days"
+        lineChart.setNoDataText("No forex yet!")
+
+//Part10
+        lineChart.animateX(1800, Easing.EaseInExpo)
+
+//Part11
+        //val markerView = CustomMarker(this@ShowForexActivity, R.layout.marker_view)
+        //lineChart.marker = markerView
     }
 }

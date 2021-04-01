@@ -196,90 +196,91 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchor="@+id/plant_detail_scrollview"
             app:layout_anchorGravity="center">
 
             <Button
                 android:id="@+id/aButton"
                 android:layout_width="99dp"
                 android:layout_height="181dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="446dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="104dp"
+                android:layout_marginTop="8dp"
                 android:text="Acidity"
+                android:textColor="@color/sunflower_black"
+                android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tButton"
-                app:layout_constraintStart_toEndOf="@+id/mButton"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.807" />
 
             <Button
                 android:id="@+id/tButton"
                 android:layout_width="99dp"
                 android:layout_height="181dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="446dp"
-                android:layout_marginEnd="53dp"
-                android:layout_marginBottom="104dp"
-                android:text="Temperature"
+                android:layout_marginTop="8dp"
+                android:text="Temp"
+                android:textColor="@color/sunflower_black"
+                android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/aButton"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.807" />
 
             <Button
                 android:id="@+id/mButton"
                 android:layout_width="99dp"
                 android:layout_height="181dp"
-                android:layout_marginStart="53dp"
-                android:layout_marginTop="446dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="104dp"
+                android:layout_marginTop="8dp"
                 android:text="Moisture"
-                android:textSize="14sp"
+                android:textColor="@color/sunflower_black"
+                android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/aButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.807" />
 
             <TextView
                 android:id="@+id/moisture_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/moisture_level"
+                android:translationZ="90dp"
                 app:layout_constraintBottom_toBottomOf="@+id/mButton"
                 app:layout_constraintEnd_toEndOf="@+id/mButton"
                 app:layout_constraintStart_toStartOf="@+id/mButton"
                 app:layout_constraintTop_toTopOf="@+id/mButton"
-                android:translationZ="90dp"/>
+                app:layout_constraintVertical_bias="0.828" />
 
             <TextView
                 android:id="@+id/temperature_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
                 android:text="@string/temperature_level"
+                android:translationZ="90dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/tButton"
                 app:layout_constraintEnd_toEndOf="@+id/tButton"
                 app:layout_constraintStart_toStartOf="@+id/tButton"
                 app:layout_constraintTop_toTopOf="@+id/tButton"
-                app:layout_constraintVertical_bias="0.50"
-                android:translationZ="90dp"/>
+                app:layout_constraintVertical_bias="0.8" />
 
             <TextView
                 android:id="@+id/aciditity_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
                 android:text="@string/acidity_level"
+                android:translationZ="90dp"
                 app:layout_constraintBottom_toBottomOf="@+id/aButton"
                 app:layout_constraintEnd_toEndOf="@+id/aButton"
                 app:layout_constraintStart_toStartOf="@+id/aButton"
                 app:layout_constraintTop_toTopOf="@+id/aButton"
-                android:translationZ="90dp"/>
+                app:layout_constraintVertical_bias="0.8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
