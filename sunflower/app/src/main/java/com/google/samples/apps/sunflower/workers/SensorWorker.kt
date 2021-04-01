@@ -54,6 +54,7 @@ class SensorWorker(
     override suspend fun doWork(): Result = coroutineScope {// access http request
         try {
             //val success: Boolean
+                //val BASE_URL = "http://169.254.221.71/"
                 val BASE_URL = "https://raw.githubusercontent.com/BBowdon00/plant_json/main/"
                 val retro = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
                 val service = retro.create(sensorEndpoint::class.java)
@@ -112,7 +113,7 @@ class SensorWorker(
 
 interface sensorEndpoint
 {
-    @GET("sensor.json")
+    @GET("sensor.txt")
     fun getSensors() : Call<List<Sensors>>
 }
 
