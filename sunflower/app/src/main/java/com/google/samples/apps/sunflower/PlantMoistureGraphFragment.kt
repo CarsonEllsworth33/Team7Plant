@@ -62,10 +62,10 @@ class PlantMoistureGraphFragment : Fragment() {
 
 //Part2
         entries.add(Entry(1f, 10f))
-        entries.add(Entry(2f, 2f))
-        entries.add(Entry(3f, 7f))
-        entries.add(Entry(4f, 20f))
-        entries.add(Entry(5f, 16f))
+        entries.add(Entry(2f, 11f))
+        entries.add(Entry(3f, 12f))
+        entries.add(Entry(4f, 12f))
+        entries.add(Entry(5f, 11f))
 
 //Part3
         val vl = LineDataSet(entries, "Moisture")
@@ -84,6 +84,9 @@ class PlantMoistureGraphFragment : Fragment() {
 //Part5
 //        lineChart.xAxis.labelRotationAngle = 0f
 
+        val leftAxis: YAxis = lineChart.getAxisLeft()
+        leftAxis.setAxisMaxValue(14F)
+        leftAxis.setAxisMinValue(9F)
 //Part6
         val data = LineData(vl)
 

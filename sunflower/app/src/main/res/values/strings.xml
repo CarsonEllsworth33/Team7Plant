@@ -54,7 +54,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="moisture_level" translation_description="level of moisture of plant">20 mL</string>
+    <string name="moisture_level" translation_description="level of moisture of plant">14 mL/day</string>
     <string name="temperature_level" translation_description="level of temperature of plant">74 F</string>
     <string name="acidity_level" translation_description="level of acidity of plant">7.2 pH</string>
 

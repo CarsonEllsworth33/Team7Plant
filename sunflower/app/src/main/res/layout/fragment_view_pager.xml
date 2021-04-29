@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:gravity="center"
-                    android:text="@string/app_name"
+                    android:text="Leaf"
                     android:textAppearance="?attr/textAppearanceHeadline5" />
 
                 </androidx.appcompat.widget.Toolbar>

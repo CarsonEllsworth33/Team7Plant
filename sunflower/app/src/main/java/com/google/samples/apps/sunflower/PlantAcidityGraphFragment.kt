@@ -23,9 +23,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import kotlinx.android.synthetic.main.fragment_plant_moisture_graph.*
@@ -59,12 +56,13 @@ class PlantAcidityGraphFragment : Fragment() {
         //Part1
         val entries = ArrayList<Entry>()
 
+
 //Part2
-        entries.add(Entry(1f, 10f))
-        entries.add(Entry(2f, 2f))
-        entries.add(Entry(3f, 7f))
-        entries.add(Entry(4f, 20f))
-        entries.add(Entry(5f, 16f))
+        entries.add(Entry(1f, 7f))
+        entries.add(Entry(2f, 7.5f))
+        entries.add(Entry(3f, 7.1f))
+        entries.add(Entry(4f, 7.3f))
+        entries.add(Entry(5f, 7.6f))
 
 //Part3
         val vl = LineDataSet(entries, "Acidity")
@@ -82,6 +80,10 @@ class PlantAcidityGraphFragment : Fragment() {
 
 //Part5
 //        lineChart.xAxis.labelRotationAngle = 0f
+
+        val leftAxis: YAxis = lineChart.getAxisLeft()
+        leftAxis.setAxisMaxValue(10F)
+        leftAxis.setAxisMinValue(6F)
 
 //Part6
         val data = LineData(vl)

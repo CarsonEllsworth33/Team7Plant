@@ -117,11 +117,11 @@ class PlantTemperatureGraphFragment : Fragment() {
         val entries = ArrayList<Entry>()
 
 //Part2
-        entries.add(Entry(1f, 10f))
-        entries.add(Entry(2f, 2f))
-        entries.add(Entry(3f, 7f))
-        entries.add(Entry(4f, 20f))
-        entries.add(Entry(5f, 16f))
+        entries.add(Entry(1f, 72f))
+        entries.add(Entry(2f, 70f))
+        entries.add(Entry(3f, 72f))
+        entries.add(Entry(4f, 73f))
+        entries.add(Entry(5f, 71f))
 
 //Part3
         val vl = LineDataSet(entries, "Temperature")
@@ -139,6 +139,9 @@ class PlantTemperatureGraphFragment : Fragment() {
 
 //Part5
 //        lineChart.xAxis.labelRotationAngle = 0f
+        val leftAxis: YAxis = lineChart.getAxisLeft()
+        leftAxis.setAxisMaxValue(76F)
+        leftAxis.setAxisMinValue(69F)
 
 //Part6
         val data = LineData(vl)
