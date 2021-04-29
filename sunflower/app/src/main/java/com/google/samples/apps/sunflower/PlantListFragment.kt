@@ -64,7 +64,7 @@ class PlantListFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_plant_list, menu)
     }
-
+    /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.filter_zone -> {
@@ -74,7 +74,7 @@ class PlantListFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+    */
     private fun subscribeUi(adapter: PlantAdapter) {
         viewModel.plants.observe(viewLifecycleOwner) { plants ->
             adapter.submitList(plants)
